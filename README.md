@@ -24,7 +24,7 @@ flomo2blinko 是一个 Chrome 扩展，可以帮助您将 Flomo 导出的笔记�
 
 1. 从 Flomo 导出笔记，获得 ZIP 文件
 2. 点击扩展图标，打开转换界面
-3. 输入您的 Blinko 用户名
+3. 输入您的 Blinko 用户名（设置页可以找到，非Access Token）
 4. 选择 Flomo 导出的 ZIP 文件
 5. 点击"Convert"按钮
 6. 等待转换完成，将自动下载 flomo_notes.bko 文件
