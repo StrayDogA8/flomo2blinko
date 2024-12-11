@@ -1,43 +1,43 @@
 # flomo2blinko
 
-## 简介
+## Introduction
 
-flomo2blinko 是一个 Chrome 扩展，可以帮助您将 Flomo 导出的笔记转换为 Blinko 可导入的格式。
+**flomo2blinko** is a Chrome extension that helps you convert notes exported from Flomo into a format that can be imported into Blinko.
 
-## 特性
+## Features
 
-- 🔄 支持将 Flomo 导出的 ZIP 文件转换为 .bko 格式
-- ⏰ 保留原始笔记的创建时间和更新时间
-- 🏷️ 自动为所有笔记添加 #flomo 标签
-- 📷 支持图片附件的转换
-- ✍️ 保持 Markdown 格式
+- 🔄 Supports converting Flomo-exported ZIP files to `.bko` format.
+- ⏰ Retains the original creation and update timestamps of notes.
+- 🏷️ Automatically adds the `#flomo` tag to all notes.
+- 📷 Supports the conversion of image attachments.
+- ✍️ Preserves Markdown formatting.
 
-## 安装
+## Installation
 
-1. 下载本项目的最新版本
-2. 打开 Chrome 浏览器，进入扩展程序页面
-3. 开启开发者模式
-4. 点击"加载已解压的扩展程序"
-5. 选择本项目文件夹
+1. Download the latest version of this project.
+2. Open Chrome and go to the Extensions page.
+3. Enable Developer Mode.
+4. Click "Load unpacked extension."
+5. Select this project's folder.
 
-## 使用
+## Usage
 
-1. 从 Flomo 导出笔记，获得 ZIP 文件
-2. 点击扩展图标，打开转换界面
-3. 输入您的 Blinko 用户名（设置页可以找到，非Access Token）
-4. 选择 Flomo 导出的 ZIP 文件
-5. 点击"Convert"按钮
-6. 等待转换完成，将自动下载 flomo_notes.bko 文件
-7. 在 Blinko 中导入 .bko 文件
+1. Export notes from Flomo to obtain a ZIP file.
+2. Click the extension icon to open the conversion interface.
+3. Enter your Blinko username (found on the settings page, not the Access Token).
+4. Select the ZIP file exported from Flomo.
+5. Click the "Convert" button.
+6. Wait for the conversion to complete, and the `flomo_notes.bko` file will be downloaded automatically.
+7. Import the `.bko` file into Blinko.
 
-## 注意事项
+## Notes
 
-- 请确保 Flomo 导出的 ZIP 文件包含完整的笔记内容
-- 转换过程中图片会被统一转换为 PNG 格式
-- 建议在导入前备份您的 Blinko 数据
-- 导入的笔记需要强制重建Embedding嵌入向量才能正常使用AI
+- Ensure that the ZIP file exported from Flomo contains complete note content.
+- During the conversion, all images will be converted to PNG format.
+- It is recommended to back up your Blinko data before importing.
+- After importing, the imported notes require forced re-embedding of vector data to function properly with AI.
 
-## 原项目
+## Original Projects
 
-[Blinko](https://github.com/blinko-space/blinko): An open-source, self-hosted personal AI note tool prioritizing privacy, built using TypeScript.  
-[Flomo](https://flomoapp.com): 浮墨笔记，是一款全平台的卡片笔记，聚焦帮你记录更多想法与灵感，以及更好回顾过往记录。
+- [Blinko](https://github.com/blinko-space/blinko): An open-source, self-hosted personal AI note tool prioritizing privacy, built using TypeScript.  
+- [Flomo](https://flomoapp.com): A cross-platform card-based note-taking app focused on helping you capture more ideas and inspirations while revisiting past records effectively.
