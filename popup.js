@@ -64,6 +64,14 @@ document.addEventListener('DOMContentLoaded', function() {
           const content = memo.querySelector('.content')?.innerHTML || '';
           const files = memo.querySelector('.files');
           
+          // 去掉 HTML 标签
+          const cleanContent = content
+            .replace(/<p>/g, '')  // 去掉开始标签
+            .replace(/<\/p>/g, '\n')  // 把结束标签替换为换行
+            .replace(/<br\s*\/?>/g, '\n')  // 把 br 标签替换为换行
+            .replace(/<[^>]+>/g, '')  // 去掉所有其他标签
+            .trim();  // 去掉首尾空白
+
           const noteData = {
             id: noteId++,
             account: {
@@ -78,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function() {
               createdAt: "2024-11-15T05:09:11.230Z",
               updatedAt: "2024-11-15T05:09:11.418Z"
             },
-            content: `#flomo ${content}`,
+            content: `#flomo ${cleanContent}`,
             isArchived: false,
             isShare: false,
             isTop: false,
@@ -151,7 +159,7 @@ document.addEventListener('DOMContentLoaded', function() {
         version: "0.22.1"
       };
 
-      // 添加 bak.json 到 ZIP，直接在 pgdump 目录下，使用格式化的 JSON
+      // 添加 bak.json 到 ZIP，直��在 pgdump 目录下，使用格式化的 JSON
       outZip.file('pgdump/bak.json', JSON.stringify(exportData, null, 2));
 
       // 生成 .bko 文件
