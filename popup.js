@@ -72,6 +72,10 @@ document.addEventListener('DOMContentLoaded', function() {
             .replace(/<[^>]+>/g, '')  // 去掉所有其他标签
             .trim();  // 去掉首尾空白
 
+          // 处理标签前的空格，但不处理行首的标签
+          const formattedContent = cleanContent
+            .replace(/([^\s\n])#/g, '$1 #');  // 只在非空格且非换行符的字符后面的#号前添加空格
+
           const noteData = {
             id: noteId++,
             account: {
@@ -86,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function() {
               createdAt: "2024-11-15T05:09:11.230Z",
               updatedAt: "2024-11-15T05:09:11.418Z"
             },
-            content: `#flomo ${cleanContent}`,
+            content: `#flomo ${formattedContent}`,
             isArchived: false,
             isShare: false,
             isTop: false,
@@ -159,7 +163,7 @@ document.addEventListener('DOMContentLoaded', function() {
         version: "0.22.1"
       };
 
-      // 添加 bak.json 到 ZIP，直��在 pgdump 目录下，使用格式化的 JSON
+      // 添加 bak.json 到 ZIP，直接在 pgdump 目录下，使用格式化的 JSON
       outZip.file('pgdump/bak.json', JSON.stringify(exportData, null, 2));
 
       // 生成 .bko 文件
