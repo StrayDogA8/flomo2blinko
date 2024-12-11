@@ -1,5 +1,7 @@
 # flomo2blinko
 
+中文版请见 [README_CN.md](https://github.com/StrayDogA8/flomo2blinko/blob/main/README_CN.md)
+
 ## Introduction
 
 **flomo2blinko** is a Chrome extension that helps you convert notes exported from Flomo into a format that can be imported into Blinko.
