@@ -36,6 +36,6 @@ flomo2blinko 是一个 Chrome 扩展，可以帮助您将 Flomo 导出的笔记�
 - 转换过程中图片会被统一转换为 PNG 格式
 - 建议在导入前备份您的 Blinko 数据
 
-## 开发者
+## 原项目Blinko
 
-[@StrayDogA8](https://github.com/StrayDogA8)
+[Blinko](https://github.com/blinko-space/blinko)
