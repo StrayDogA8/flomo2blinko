@@ -38,5 +38,5 @@ flomo2blinko 是一个 Chrome 扩展，可以帮助您将 Flomo 导出的笔记�
 
 ## 原项目
 
-[Blinko](https://github.com/blinko-space/blinko)
+[Blinko](https://github.com/blinko-space/blinko)  
 [Flomo](https://flomoapp.com)
