@@ -38,5 +38,5 @@ flomo2blinko 是一个 Chrome 扩展，可以帮助您将 Flomo 导出的笔记�
 
 ## 原项目
 
-[Blinko](https://github.com/blinko-space/blinko)  
-[Flomo](https://flomoapp.com)
+[Blinko](https://github.com/blinko-space/blinko): An open-source, self-hosted personal AI note tool prioritizing privacy, built using TypeScript.  
+[Flomo](https://flomoapp.com): 浮墨笔记，是一款全平台的卡片笔记，聚焦帮你记录更多想法与灵感，以及更好回顾过往记录。
