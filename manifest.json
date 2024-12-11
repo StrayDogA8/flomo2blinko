@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "Flomo to Blinko",
+  "name": "flomo2blinko",
   "version": "1.0",
-  "description": "Convert Flomo export file to Blinko import format",
+  "description": "Convert Flomo notes to Blinko format",
   "icons": {
     "128": "images/icon128.png"
   },
