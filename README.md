@@ -7,7 +7,7 @@ flomo2blinko 是一个 Chrome 扩展，可以帮助您将 Flomo 导出的笔记�
 ## 特性
 
 - 🔄 支持将 Flomo 导出的 ZIP 文件转换为 .bko 格式
-- ⏰ 保留原始笔记的创建时间和更新时间
+- ⏰ ~~保留原始笔记的创建时间和更新时间~~（目前Blinko原项目的bko导入功能暂未支持创建时间）
 - 🏷️ 自动为所有笔记添加 #flomo 标签
 - 📷 支持图片附件的转换
 - ✍️ 保持 Markdown 格式
@@ -39,7 +39,3 @@ flomo2blinko 是一个 Chrome 扩展，可以帮助您将 Flomo 导出的笔记�
 ## 开发者
 
 [@StrayDogA8](https://github.com/StrayDogA8)
-
-## 许可证
-
-[MIT License](LICENSE) 
