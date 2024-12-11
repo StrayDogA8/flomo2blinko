@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "Flomo to Blinko",
+  "version": "1.0",
+  "description": "Convert Flomo export file to Blinko import format",
+  "icons": {
+    "128": "images/icon128.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "images/icon128.png"
+  },
+  "permissions": [
+    "downloads"
+  ]
+} 
