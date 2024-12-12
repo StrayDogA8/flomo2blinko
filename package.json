@@ -1,0 +1,22 @@
+{
+  "scripts": {
+    "build": "webpack"
+  },
+  "name": "flomo2blinko",
+  "version": "1.0.0",
+  "description": "中文版请见 [README_CN.md](https://github.com/StrayDogA8/flomo2blinko/blob/main/README_CN.md)",
+  "main": "popup.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^5.97.1",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "@wcj/html-to-markdown": "^2.1.1"
+  }
+}

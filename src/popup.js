@@ -1,3 +1,5 @@
+import htmlToMarkdown from '@wcj/html-to-markdown';
+
 document.addEventListener('DOMContentLoaded', function() {
   const zipInput = document.getElementById('flomoZip');
   const usernameInput = document.getElementById('username');
@@ -58,64 +60,20 @@ document.addEventListener('DOMContentLoaded', function() {
       for (const memo of memos) {
         try {
           const time = memo.querySelector('.time')?.textContent || '';
-          console.log('Original time:', time);
-          console.log('Parsed time:', new Date(time).toISOString());
-          
-          const content = memo.querySelector('.content')?.innerHTML || '';
+          const contentDiv = memo.querySelector('.content');
           const files = memo.querySelector('.files');
           
-          // 去掉 HTML 标签
-          const cleanContent = content
-            // 先处理特殊字符
-            .replace(/&nbsp;/g, ' ')
-            .replace(/&lt;/g, '<')
-            .replace(/&gt;/g, '>')
-            .replace(/&amp;/g, '&')
-            
-            // 处理段落
-            .replace(/<p[^>]*>\s*<\/p>/g, '\n')  // 处理空段落
-            .replace(/<p[^>]*>/g, '')
-            .replace(/<\/p>/g, '\n')
-            
-            // 处理列表
-            .replace(/<ol[^>]*>/g, '\n')
-            .replace(/<ul[^>]*>/g, '\n')
-            .replace(/<li[^>]*>/g, (match, offset, string) => {
-              const prevText = string.slice(0, offset);
-              const olCount = (prevText.match(/<ol[^>]*>/g) || []).length;
-              const ulCount = (prevText.match(/<ul[^>]*>/g) || []).length;
-              const level = olCount + ulCount;
-              const isOrdered = prevText.lastIndexOf('<ol') > prevText.lastIndexOf('<ul');
-              const marker = isOrdered ? '1. ' : '- ';
-              return '  '.repeat(Math.max(0, level - 1)) + marker;
-            })
-            .replace(/<\/li>/g, '\n')
-            .replace(/<\/[ou]l>/g, '\n')
-            
-            // 处理格式化标签
-            .replace(/<strong>\s*<\/strong>/g, '')  // 先移除空的strong标签
-            .replace(/<strong>(.*?)<\/strong>/g, ' **$1** ')  // 在非空粗体标记两侧添加空格
-            .replace(/<strong [^>]*>(.*?)<\/strong>/g, ' **$1** ')  // 带属性的粗体标签
-            .replace(/<em>(.*?)<\/em>/g, '*$1*')
-            .replace(/<a[^>]*href="([^"]*)"[^>]*>(.*?)<\/a>/g, '[$2]($1)')
-            .replace(/<br\s*\/?>/g, '\n')
-            
-            // 移除其他HTML标签
-            .replace(/<[^>]+>/g, '')
-            
-            // 清理空白字符
-            .replace(/\n{3,}/g, '\n\n')     // 合并多个换行为最多两个
-            .replace(/[ \t]+/g, ' ')        // 合并多个空格
-            .replace(/\*\* +/g, '** ')      // 保持粗体标记后只有一个空格
-            .replace(/ +\*\*/g, ' **')      // 保持粗体标记前只有一个空格
-            .replace(/\n +/g, '\n')         // 移除每行开头的空格
-            .replace(/[ \t]+\n/g, '\n')     // 移除每行结尾的空格
-            .replace(/^\s+|\s+$/g, '');     // 移除开头和结尾的空白
-
-          // 处理标签前的空格，但不处理行首的标签
-          const formattedContent = cleanContent
-            .replace(/([^\s\n])#/g, '$1 #');  // 只在非空格且非换行符的字符后面的#号前添加空格
-
+          // 先获取原始HTML内容
+          const htmlContent = contentDiv?.innerHTML || '';
+          
+          // 使用 html-to-markdown 转换
+          const markdown = await htmlToMarkdown({
+            html: htmlContent,
+            keepDataImages: false,
+            ignoreTags: [],
+            removeComments: true,
+          });
+          
           const noteData = {
             id: noteId++,
             account: {
@@ -130,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function() {
               createdAt: "2024-11-15T05:09:11.230Z",
               updatedAt: "2024-11-15T05:09:11.418Z"
             },
-            content: `#flomo ${formattedContent}`,
+            content: `#flomo ${markdown}`,
             isArchived: false,
             isShare: false,
             isTop: false,
@@ -222,4 +180,34 @@ document.addEventListener('DOMContentLoaded', function() {
       alert(`Error: ${err.message}`);
     }
   });
-}); 
+});
+
+function processHtmlContent(html) {
+  try {
+    // 移除多余的空格和换行
+    html = html.trim();
+    
+    // 使用DOMParser解析HTML
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, 'text/html');
+    
+    // 获取content内容
+    const contentDiv = doc.querySelector('.content');
+    if (!contentDiv) {
+      return html;
+    }
+    
+    // 获取纯文本内容
+    let content = contentDiv.textContent || contentDiv.innerText;
+    
+    // 清理文本
+    content = content.trim()
+      .replace(/\s+/g, ' ') // 合并多个空格
+      .replace(/\n+/g, '\n'); // 合并多个换行
+      
+    return content;
+  } catch (error) {
+    console.error('Error processing HTML content:', error);
+    return html;
+  }
+} 
